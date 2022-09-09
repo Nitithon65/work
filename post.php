@@ -9,7 +9,15 @@
 <body>
     <h1 style="text-align: center;">Webboard KakKak</h1>
         <hr>
-        <center>ต้องการดูกระทู้หมายเลข = <?php echo $_GET["id"];?><br></center><br>
+        <div align="center">ต้องการดูกระทู้หมายเลข = <?php echo $_GET["id"];?><br>
+        <br>
+        <?php
+            if($_GET['id']%2==0){
+                echo "เป็นกระทู้หมายเลขคู่";
+            }else{
+                echo "เป็นกระทู้หมายเลขคี่";
+            }
+        ?>
         <table style="border: 2px solid black; width:40%" align ="center">
           <tr><td colspan="2" style="background-color: #6CD2FE;">แสดงความคิดเห็น</td></tr>
           <tr><td><textarea name="message" rows="10" cols="30"></textarea></td></tr>
@@ -17,7 +25,7 @@
         </table>
         <br>
         <div align="center">
-            <a href="index.html">กลับไปหน้าหลัก</a>
+            <a href="index.php">กลับไปหน้าหลัก</a>
         </div>
 </body>
-</html>
+</html>     
