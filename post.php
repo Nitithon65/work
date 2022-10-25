@@ -21,7 +21,7 @@
         <table style="border: 2px solid black; width:40%" align ="center">
           <tr><td colspan="2" style="background-color: #6CD2FE;">แสดงความคิดเห็น</td></tr>
           <tr><td><textarea name="message" rows="10" cols="30"></textarea></td></tr>
-          <tr><td colspan="2" align="center"><input type="submit" value="ส่งข้อความ"></td></tr>
+          <tr><td><colspan="2" align="center"><input type="submit" value="ส่งข้อความ"></td></tr>
         </table>
         <br>
         <div align="center">
