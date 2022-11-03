@@ -16,6 +16,24 @@ if(isset($_SESSION['id'])){
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>login</title>
+   <script>
+        function password_show_hide(){
+            let x=document.getElementById("password");
+            let show_eye=document.getElementById("show_eye");
+            let hide_eye=document.getElementById("hide_eye");
+            hide_eye.classList.remove("d-none");
+            if(x.type==="password"){
+                x.type="text";
+                show_eye.style.display="none";
+                hide_eye.style.display="block";
+
+            }else{
+                x.type="password";
+                show_eye.style.display="block";
+                hide_eye.style.display="none";
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -40,8 +58,14 @@ if(isset($_SESSION['id'])){
             <input type="text" name="login" class="form-control mt-2">
         </div>
         <div class="form-group mb-3">
-            <lable for="Pwd">Password:</label>
-            <input type="text" name="Pwd" class="form-control mt-2">
+            <lable for="Pwd" class="form-label">Password:</label>
+            <div class="input-group">
+            <input type="password" name="Pwd" class="form-control" id="password">
+            <span class="input-group-text" onclick="password_show_hide();">
+              <i class="bi bi-eye-fill" id="show_eye"></i>
+              <i class="bi bi-eye-slash-fill d-none" id="hide_eye"></i>
+            </span>
+            </div>
         </div>
         <center><button type="submit" class="btn btn-secondary btn-sm">Login</button></center>
         </form>

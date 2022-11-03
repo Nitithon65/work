@@ -12,6 +12,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Webboard</title>
+    <script>
+        function myFunction(){
+            let r=confirm("ต้องการจะลบหรือไม่");
+            return r;
+        }
+    </script>
 </head>
 <?php
 if(!isset($_SESSION['id'])){
@@ -19,68 +25,65 @@ if(!isset($_SESSION['id'])){
 
 <body>
     <div class="container">
-    <h1 style="text-align:center;">Webboard KakKak</h1>
+    <h1 style="text-align:center;">Webboard KakKak</h1> 
     <?php include "nav.php"; ?>
     <br>
     <div class="d-flex">
-            <div>
-                <label>หมวดหมู่</label>
-                <span class="dropdown">
-                    <button class="btn btn-light dropdown-toggle btn-sm"
-                    type="button" id="dropdown2" data-bs-toggle="dropdown"
-                    aria-expanded="false">--ทั้งหมด--</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown2">
-                        <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
-                        <li><a href="#" class="dropdown-item">เรื่องเรียน</a></li>
-                        <li><a href="#" class="dropdown-item">เรื่องทั่วไป</a></li>
-                    </ul>
-                </span>
-            </div>
+        <div>
+            <label>หมวดหมู่</label>
+            <span class="dropdown">
+                <button class="btn btn-light dropdown-toggle btn-sm" type="button" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="fals">--ทั้งหมด--</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdown2">
+                    <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
+                    <li><a href="#" class="dropdown-item">เรื่องเรียน</a></li>
+                    <li><a href="#" class="dropdown-item">เรื่องทั่วไป</a></li>
+                </ul>
+            </span>
         </div>
-<br>
-<table class="table table-striped">
-    <?php
-        for($i=1;$i<=10;$i++){
-            echo "<tr><td><a href=post.php?id=$i style=text-decoration:none>กระทู้ที่ $i</td></tr>";
-        }
-    ?>
-</table>
     </div>
+    <br>
+    <table class="table table-striped">
+            <?php 
+                for($i=1;$i<=10;$i++){
+                    echo "<tr><td><a href=post.php?id=$i style=text-decoration:none>กระทู้ที่ $i</a></td></tr>";
+                }
+            ?>
+    </table>
+    <hr>
+   
 </body>
 <?php }else{ ?>
     <body>
     <div class="container">
-    <h1 style="text-align:center;">Webboard KakKak</h1>
+    <h1 style="text-align:center;">Webboard KakKak</h1> 
     <?php include "nav.php"; ?>
     <br>
     <div class="d-flex justify-content-between">
-            <div>
-                <label>หมวดหมู่</label>
-                <span class="dropdown">
-                    <button class="btn btn-light dropdown-toggle btn-sm"
-                    type="button" id="dropdown2" data-bs-toggle="dropdown"
-                    aria-expanded="false">--ทั้งหมด--</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown2">
-                        <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
-                        <li><a href="#" class="dropdown-item">เรื่องเรียน</a></li>
-                        <li><a href="#" class="dropdown-item">เรื่องทั่วไป</a></li>
-                    </ul>
-                </span>
-            </div>
-            <div><a href="newpost.php" class="btn btn-success btn-sm"><i class="bi bi-plus"></i>สร้างกระทู้ใหม่</a></div>
+        <div>
+            <label>หมวดหมู่</label>
+            <span class="dropdown">
+                <button class="btn btn-light dropdown-toggle btn-sm" type="button" id="dropdown2" data-bs-toggle="dropdown" aria-expanded="fals">--ทั้งหมด--</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdown2">
+                    <li><a href="#" class="dropdown-item">ทั้งหมด</a></li>
+                    <li><a href="#" class="dropdown-item">เรื่องเรียน</a></li>
+                    <li><a href="#" class="dropdown-item">เรื่องทั่วไป</a></li>
+                </ul>
+            </span>
         </div>
-<br>
-<table class="table table-striped">
-    <?php
-        for($i=1;$i<=10;$i++){
-            echo "<tr><td><a href=post.php?id=$i style=text-decoration:none>กระทู้ที่ $i</a></td>";
-            if($_SESSION["role"]=="a"){
-                echo "<td><a href=delete.php?id=$i class='btn btn-danger btn-sm'><i class='bi bi-trash'></li></a></td>";
-            }
-            echo"</tr>";
-        }
-    ?>
-</table>
+        <div><a href="newpost.php" class="btn btn-success btn-sm"><i class="bi bi-plus"></i> สร้างกระทู้ใหม่</a></div>
+    </div>
+    <br>
+    <table class="table table-striped">
+            <?php 
+                for($i=1;$i<=10;$i++){
+                    echo "<tr><td><a href=post.php?id=$i style=text-decoration:none>กระทู้ที่ $i</a></td>";
+                    if($_SESSION["role"]=="a"){
+                        echo "<td><a href=delete.php?id=$i class='btn btn-danger btn-sm' onclick='return myFunction();'> <i class='bi bi-trash'></i></a></td>";
+                    }
+                        echo "</tr>";
+                }
+            ?>
+    </table>
     </div>
 </body>
 <?php } ?>
